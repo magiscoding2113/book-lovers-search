@@ -39,3 +39,20 @@ mutation SaveBook($description: String!, $title: String!, $bookId: String!, $ima
         }
     }
 }`;
+
+export const REMOVE_BOOK = gql`
+mutation removeBook($bookId: String!) {
+    removeBook(bookId: $bookId) {
+        savedBooks {
+            bookId
+            authors
+            description
+            title
+            image
+            link
+        }
+        email
+        username
+        _id
+    }
+}`

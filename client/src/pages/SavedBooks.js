@@ -31,8 +31,11 @@ const SavedBooks = () => {
       catch(error) {
         console.error(error);
       }
+      
+     },
+     [userDataLength]);
     
-  }, [userDataLength]);
+
 
   const [removeBook] = useMutation(REMOVE_BOOK);
   
