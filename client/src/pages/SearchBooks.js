@@ -70,25 +70,26 @@ const SearchBooks = () => {
     }
 
     try {
-      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      const response = await saveBook(bookToSave, token);
 
-      const bookInfo = await saveBook(
-        {
-          variables: {
-            bookId: bookToSave.bookId,
-            title: bookToSave.title,
-            description: bookToSave.description,
-            authors: bookToSave.authors,
-            image: bookToSave.image,
-            link: bookToSave.link
-          }
-        }
-      )
-    } catch(err) {
+      if(!response.ok) {
+        throw new Error('something went wrong!');
+      }
+       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+
+      //const books = await saveBook(
+        //{
+          //variables: {
+            //bookId: bookToSave.bookId,
+            //title: bookToSave.title,
+            //description: bookToSave.description,
+            //authors: bookToSave.authors,
+           // image: bookToSave.image,
+            //link: bookToSave.link
+          } catch(err) {
       console.error(err);
-    }
-
-    };
+      }
+  };
 
   return (
     <>
